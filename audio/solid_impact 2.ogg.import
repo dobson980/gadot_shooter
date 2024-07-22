@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://5on13s50nqi4"
+path="res://.godot/imported/solid_impact 2.ogg-991cc4f549a65345ebe87ea06ea620a5.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/solid_impact 2.ogg"
+dest_files=["res://.godot/imported/solid_impact 2.ogg-991cc4f549a65345ebe87ea06ea620a5.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

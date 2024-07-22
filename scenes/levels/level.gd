@@ -1,21 +1,29 @@
 extends Node2D
 
-var test_array: Array[String] = ["Test", "Test2", "Test3", "Test4"]
+var laser_scene: PackedScene = preload("res://scenes/projectiles/laser.tscn")
+var grenade_scene: PackedScene =  preload("res://scenes/projectiles/grenade.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#$Logo.rotation = 90
-	
-	for i in test_array:
-		print(i)
-	
 	pass # Replace with function body.
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	$Logo.position.x += 1
-	print($Logo.position.x)
-	if $Logo.position.x >= 1000:
-		$Logo.position.x = 0
 	pass
+
+func _on_player_entered_gate(body):
+	if body == $Player:
+		print(str(body) + " : Entered the gate.")
+	pass # Replace with function body.
+
+func _on_player_laser_fired(atPosition):
+	var laser = laser_scene.instantiate()
+	laser.position = atPosition
+	$Projectiles.add_child(laser)
+	print("pew pew!")
+
+func _on_player_grenade_thrown(atPosition):
+	var grenade =  grenade_scene.instantiate()
+	grenade.position = atPosition
+	$Projectiles.add_child(grenade)
+	print("frag out!")
