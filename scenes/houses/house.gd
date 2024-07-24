@@ -1,23 +1,20 @@
 extends Area2D
 
-@export var SPEED: int = 1000
-var direction: Vector2
+signal player_entered
+signal player_left
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$SelfDestruct.start()
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	position += direction * SPEED * delta
+func _process(_delta):
+	pass
 
-func _on_body_entered(body):
-	if "hit" in body:
-		body.hit()
-	queue_free()
+func _on_body_entered(_body):
+	player_entered.emit()
 	pass # Replace with function body.
 
-func _on_timer_timeout():
-	queue_free()
+func _on_body_exited(_body):
+	player_left.emit()
 	pass # Replace with function body.

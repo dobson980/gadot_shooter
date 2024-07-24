@@ -13,6 +13,9 @@ size = Vector2(85, 37)
 size = Vector2(79, 30)
 
 [node name="drone" type="CharacterBody2D"]
+position = Vector2(0, -2)
+collision_layer = 2
+collision_mask = 15
 script = ExtResource("1_gl55f")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

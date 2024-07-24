@@ -9,3 +9,6 @@ func _process(_delta):
 	var direction = Vector2.RIGHT
 	velocity = direction * SPEED
 	move_and_slide()
+
+func hit():
+	queue_free()

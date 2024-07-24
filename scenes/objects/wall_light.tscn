@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://kyc4i4wk5yba"]
+
+[ext_resource type="Texture2D" uid="uid://djbeb2x5o2yv" path="res://graphics/objects/wall_lamp.png" id="1_ggt1h"]
+[ext_resource type="Texture2D" uid="uid://b5vwfiy1eil4r" path="res://graphics/lights/textures/circle.png" id="2_giu0j"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_r3rfq"]
+polygon = PackedVector2Array(-212, -4, -212, 51, -214, 51, -224, 44, -224, 40, -227, 38, -228, 6, -223, 1, -223, -4, -221, -7, -218, -9, -215, -9, -213, -7)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_nmwql"]
+polygon = PackedVector2Array(-237, 84, -240, 84, -240, 80, -237, 78, -234, 75, -232, 73, -237, 66, -216, 50, -214, 51, -235, 67, -230, 74, 225, 73, 229, 73, 234, 67, 222, 59, 213, 51, 215, 49, 236, 66, 231, 73, 240, 81, 240, 83, 236, 82, 230, 78, 116, 78, -119, 78, -228, 78, -232, 79)
+
+[node name="WallLight" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 11
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-393, 75, -259, 76, -254, 82, -246, 82, -239, 83, -231, 77, 228, 76, 237, 81, 246, 82, 257, 80, 260, 75, 374, 76, 393, 70, 418, 19, 381, -28, 356, -51, 331, -65, 298, -77, 277, -79, -286, -80, -320, -72, -344, -60, -367, -42, -388, -21, -405, -1, -418, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ggt1h")
+region_enabled = true
+region_rect = Rect2(-7.99679, -4.07201, 854.869, 171.883)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 8.7
+shadow_enabled = true
+shadow_filter = 1
+texture = ExtResource("2_giu0j")
+texture_scale = 2.5
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_r3rfq")
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="."]
+position = Vector2(-2, 0)
+scale = Vector2(-1, 1)
+occluder = SubResource("OccluderPolygon2D_r3rfq")
+
+[node name="LightOccluder2D3" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_nmwql")
