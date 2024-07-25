@@ -18,11 +18,11 @@ func _on_player_laser_fired(atPosition, direction):
 	laser.rotation_degrees = rad_to_deg(direction.angle()) + 90
 	laser.direction = direction
 	$Projectiles.add_child(laser)
-	print("pew pew!")
+	$Hud.update_laser_text()
 
 func _on_player_grenade_thrown(atPosition, direction):
 	var grenade =  grenade_scene.instantiate() as RigidBody2D
 	grenade.position = atPosition
 	grenade.linear_velocity = direction * grenade.SPEED
 	$Projectiles.add_child(grenade)
-	print("frag out!")
+	$Hud.update_grenade_text()
