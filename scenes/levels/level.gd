@@ -1,4 +1,5 @@
 extends Node2D
+class_name LevelParent
 
 var laser_scene: PackedScene = preload("res://scenes/projectiles/laser.tscn")
 var grenade_scene: PackedScene =  preload("res://scenes/projectiles/grenade.tscn")
@@ -10,11 +11,6 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	pass
-
-func _on_player_entered_gate(_body):
-	var tween = create_tween()
-	tween.tween_property($Player, "speed", 0, 0.25)
-	pass # Replace with function body.
 
 func _on_player_laser_fired(atPosition, direction):
 	var laser = laser_scene.instantiate() as Area2D
@@ -30,13 +26,3 @@ func _on_player_grenade_thrown(atPosition, direction):
 	grenade.linear_velocity = direction * grenade.SPEED
 	$Projectiles.add_child(grenade)
 	print("frag out!")
-
-
-func _on_house_player_entered():
-	var tween = get_tree().create_tween()
-	tween.tween_property($Player/Camera2D, "zoom", Vector2(1,1), 1)
-	
-func _on_house_player_left():
-	var tween = get_tree().create_tween()
-	tween.tween_property($Player/Camera2D, "zoom", Vector2(0.6,0.6), 2)
-	pass # Replace with function body.
